@@ -13,8 +13,12 @@ class Vehicals(ABC):
         pass
 
 
-
 class Cars(Vehicals):
-    def __init__(self, brand, year, seats, rental_price_per_day):
-        super.__init__(self, brand, year, rental_price_per_day)
+    def __init__(self, brand, model, year, seats, rental_price_per_day):
+        super.__init__(self, brand, model, year, rental_price_per_day)
         self.seats = seats
+
+ #Car: Toyota Corolla, Year: 2020, Seats: 5, Rental Price: $50/day
+    def display_info(self):
+        print(f"Car: {self.brand} {self.model}, Year: {self.year}, Seats: {self.seats},
+               Rental price: ${self.rental_price_per_day}/day ")
