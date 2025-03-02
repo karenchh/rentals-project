@@ -19,7 +19,12 @@ class Vehicals():
         return self.__rental_price_per_day
     
     def rentalSetter(self, new_rental_price_per_day):
-        self.__rental_price_per_day += new_rental_price_per_day
+        self.__rental_price_per_day = new_rental_price_per_day
+
+    def updated_price(self, newamount):
+        self.rentalSetter(newamount)
+        newrentalprice = self.rentalGetter()
+        print(f"Updated rental price for {self.brand} {self.model}: $ {newrentalprice} /day ")
 
 class Cars(Vehicals):
     def __init__(self, brand, model, year, seating_capacity ):
@@ -30,11 +35,11 @@ class Cars(Vehicals):
     def display_info(self):
         information = super().display_info()
         print(f"Car: {information} ,  Seats: {self.seating_capacity}, Rental price: ${self.rentalGetter()}/day ")
+
 #Rental cost for Toyota Corolla for 3 days: $150
     def calculate_rental_cost(self, days):
         rentalperday = super().calculate_rental_cost(days)
         print(f"Rental cost for {self.brand} {self.model} for {days} days: ${rentalperday}")
-
 
 class Bikes(Vehicals):
     def __init__(self, brand, model, year, engine_capacity):
@@ -49,6 +54,7 @@ class Bikes(Vehicals):
     def calculate_rental_cost(self, days):
         rentalperday = super().calculate_rental_cost(days)
         print(f"Rental cost for {self.brand} {self.model} for {days} days: ${rentalperday}")
+
 
 def show_vehicle_info(vehicle):
     vehicle.display_info()
@@ -70,6 +76,8 @@ bike.display_info()
 days = input("For how many days you need to rent: ")
 bike.calculate_rental_cost(days)
 
+print("================================================")
+car.updated_price(55)
 #Cars_list = ["Toyota" , "BMW" , "Audi"]
 #bikes_list = ["Yamaha" , "Bianchi"]
 
